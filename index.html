@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marwa Mohammed Basalah | Software Developer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #2d3748;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+            background: #f7fafc;
+            margin: 20px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, #2c3e50 0%, #1a2632 100%);
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .profile {
+            text-align: center;
+            padding: 0 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .profile h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile .title {
+            font-size: 0.85rem;
+            color: #a0aec0;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 0.75rem 2rem;
+            color: #e2e8f0;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .category {
+            padding: 0.5rem 2rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #a0aec0;
+            margin-top: 1.5rem;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .top-projects-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .top-projects-link:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            background: white;
+            margin: 2rem;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            color: #4a5568;
+        }
+
+        .enjoy-message {
+            font-style: italic;
+            color: #667eea;
+            margin-top: 1.5rem;
+        }
+
+        .footer {
+            margin-top: auto;
+            background: #2d3748;
+            color: #cbd5e0;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: #cbd5e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: #667eea;
+        }
+
+        .project-card h3 a {
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .project-card h3 a:hover {
+            color: #667eea;
+        }
+
+        .project-card p {
+            color: #718096;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-stats {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.85rem;
+        }
+
+        .language-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #667eea;
+        }
+
+        .error-message {
+            background: #fed7d7;
+            color: #c53030;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-badge {
+            background: #edf2f7;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                margin: 10px;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .hero {
+                margin: 1rem;
+            }
+
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile">
+                <h1>Marwa Mohammed Basalah</h1>
+                <div class="title">C++/.NET Framework Junior Developer</div>
+            </div>
+
+            <div class="category">Desktop Applications</div>
+            <ul class="nav-menu">
+                <li><a data-category="C++">C++ Console Apps</a></li>
+                <li><a data-category="C#">C# WinForms Apps (.NET Framework)</a></li>
+            </ul>
+
+            <div class="category">Utilities</div>
+            <ul class="nav-menu">
+                <li><a data-category="C++">C++ Libraries</a></li>
+                <li><a data-category="C++">C++ Classes</a></li>
+            </ul>
+
+            <div class="category">Browse Projects</div>
+            <ul class="nav-menu">
+                <li><a data-category="all">All Projects</a></li>
+                <li><a data-category="recent">Recent Work</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="logo">
+                    <strong>Marwa's Portfolio</strong>
+                </div>
+                <a href="https://github.com/marwamohammedbasalah" class="top-projects-link" target="_blank">
+                    ⭐ View All Projects on GitHub
+                </a>
+            </header>
+
+            <div class="hero">
+                <h2>My GitHub Projects</h2>
+                <p>Welcome to my portfolio website showcasing all of my projects in software development!</p>
+                <p>Use the navigation bar on the left to browse through projects by category.</p>
+                <p>Check out my <a href="https://github.com/marwamohammedbasalah" target="_blank"
+                        style="color:#667eea; font-weight:600;">GitHub Profile</a> from the link above.</p>
+                <div class="enjoy-message">✨ Enjoy your tour! ✨</div>
+
+                <div style="margin-top: 2rem;">
+                    <h3>📂 My Repositories</h3>
+                    <div id="projects-container">
+                        <div class="loading">Loading projects from GitHub...</div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <div class="social-links">
+                    <a href="https://github.com/marwamohammedbasalah" target="_blank">GitHub</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">YouTube</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">Email</a>
+                </div>
+                <div class="copyright">
+                    © 2025 Marwa's Projects Portfolio
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        const GITHUB_USERNAME = 'marwaammed9';
+        let allRepos = [];
+
+        async function fetchGitHubRepos() {
+            const container = document.getElementById('projects-container');
+            try {
+                const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=50`);
+                if (!response.ok) throw new Error('Failed to fetch');
+                const repos = await response.json();
+                allRepos = repos;
+                if (repos.length === 0) {
+                    container.innerHTML = '<div class="error-message">No repositories found.</div>';
+                    return;
+                }
+                displayRepositories(repos);
+            } catch (error) {
+                container.innerHTML = '<div class="error-message">Unable to load repositories from GitHub.</div>';
+            }
+        }
+
+        function displayRepositories(repos) {
+            const container = document.getElementById('projects-container');
+            const projectsHTML = `
+                <div class="projects-grid">
+                    ${repos.map(repo => `
+                        <div class="project-card">
+                            <h3>📁 <a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
+                            <p>${repo.description || 'No description provided.'}</p>
+                            ${repo.language ? `<div class="language-badge" style="background: ${getLanguageColor(repo.language)}20; color: ${getLanguageColor(repo.language)};">💻 ${repo.language}</div>` : ''}
+                            <div class="project-stats">
+                                <span>⭐ ${repo.stargazers_count || 0}</span>
+                                <span>🍴 ${repo.forks_count || 0}</span>
+                                <span>📅 Updated: ${new Date(repo.updated_at).toLocaleDateString()}</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            container.innerHTML = projectsHTML;
+        }
+
+        function getLanguageColor(language) {
+            const colors = { 'C++': '#f34b7d', 'C#': '#178600', 'JavaScript': '#f1e05a', 'Python': '#3572A5' };
+            return colors[language] || '#6e7681';
+        }
+
+        function filterRepositories(category) {
+            if (!allRepos.length) return;
+            let filtered = [...allRepos];
+            if (category === 'C++') filtered = allRepos.filter(repo => repo.language === 'C++');
+            else if (category === 'C#') filtered = allRepos.filter(repo => repo.language === 'C#');
+            else if (category === 'recent') filtered = allRepos.slice(0, 6);
+            displayRepositories(filtered);
+        }
+
+        function setupNavigation() {
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    filterRepositories(this.getAttribute('data-category'));
+                });
+            });
+        }
+
+        fetchGitHubRepos();
+        setupNavigation();
+    </script>
+</body>
+
+</html>
