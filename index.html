@@ -344,9 +344,18 @@
         let allRepos = [];
 
         async function fetchGitHubRepos() {
-            const container = document.getElementById('projects-container');
-            try {
-                const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=50`);
+    const container = document.getElementById('projects-container');
+    try {
+        // جلب المستودعات مع استبعاد مستودع GitHub Pages نفسه
+        const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=50`);
+        if (!response.ok) throw new Error('Failed to fetch');
+        let repos = await response.json();
+        
+        // استبعاد مستودع GitHub Pages نفسه من الظهور
+        const pagesRepoName = `${GITHUB_USERNAME}.github.io`;
+        repos = repos.filter(repo => repo.name !== pagesRepoName);
+        
+        allRepos = repos;
                 if (!response.ok) throw new Error('Failed to fetch');
                 const repos = await response.json();
                 allRepos = repos;
